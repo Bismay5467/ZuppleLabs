@@ -53,6 +53,7 @@ export default function FormModal() {
       const res = await formSubmitEvent(data);
       if (res.status >= 200 && res.status < 300) {
         setShowNotification(true);
+        setFileNames({ sourceFile: "", thumbnailImage: "" });
         reset();
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
