@@ -1,0 +1,452 @@
+:root {
+  --bgColor-primary: rgba(33, 36, 55, 255);
+  --bgColor-secondary: rgba(17, 20, 29, 255);
+  --bgColor-loading: #333333;
+
+  --color-primary: rgb(222, 219, 219);
+  --color-secondary: rgb(6, 130, 179);
+
+  --margin-normal: 30px;
+  --margin-small: 20px;
+  --margin-smaller: 10px;
+
+  --font-size-large: clamp(1.5rem, 2vw, 2rem);
+  --font-size-normal: clamp(0.9rem, 2vw, 1.1rem);
+  --font-size-small: clamp(0.5rem, 2vw, 0.9rem);
+
+  --border-radius-normal: 5px;
+  --border-radius-small: 3px;
+
+  --laptop-screen: 1200px;
+  --tablet-screen: 800px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bgColor-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 30px;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bgColor-secondary);
+}
+
+.blocks {
+  width: 100%;
+  height: 280px;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-bottom: var(--margin-normal);
+}
+
+.block {
+  width: 180px;
+  height: 250px;
+  margin-right: var(--margin-normal);
+  display: inline-block;
+  position: relative;
+}
+
+.block > p {
+  color: var(--color-secondary);
+}
+
+.block > .front {
+  width: 155px;
+  height: 155px;
+  position: relative;
+  top: 30px;
+  left: 30px;
+  text-align: center;
+  padding-block: 10px;
+}
+
+.block > .front:hover {
+  cursor: pointer;
+
+  background: #7418c4;
+  background: -webkit-linear-gradient(to top, #4a00e0, #7418c4);
+  background: linear-gradient(to top, #4a00e0, #7418c4);
+}
+
+.block > .top {
+  width: 155px;
+  height: 24px;
+  position: absolute;
+  transform: skewX(50deg);
+  left: 15px;
+  top: 55px;
+}
+
+.block > .left {
+  width: 29px;
+  height: 175px;
+  position: absolute;
+  transform: skewY(40deg);
+  top: 67px;
+  left: 1px;
+}
+
+.addtoNetworkFront {
+  background: #8e2de2;
+  background: -webkit-linear-gradient(to top, #4a00e0, #8e2de2);
+  background: linear-gradient(to top, #4a00e0, #8e2de2);
+}
+
+.notAddtoNetworkFront {
+  background: #636363;
+  background: -webkit-linear-gradient(to left, #a2ab58, #636363);
+  background: linear-gradient(to left, #a2ab58, #636363);
+}
+
+.addtoNetworkTop {
+  background: #ad5389;
+  background: -webkit-linear-gradient(to right, #3c1053, #612a4b);
+  background: linear-gradient(to right, #3c1053, #612a4b);
+}
+
+.notAddtoNetworkTop {
+  background: #636363;
+  background: -webkit-linear-gradient(to left, #61672f, #636363);
+  background: linear-gradient(to left, #61672f, #636363);
+}
+
+.addtoNetworkLeft {
+  background: #260d3c;
+}
+
+.notAddtoNetworkLeft {
+  background: #3e3e3e;
+}
+
+.block .front > p {
+  margin: 10px;
+  color: var(--color-primary);
+}
+
+.divider {
+  width: 80%;
+  height: 0.1%;
+  background-color: var(--color-primary);
+  margin: 0 auto;
+  margin-bottom: var(--margin-smaller);
+}
+
+.modal {
+  width: 80%;
+  min-height: 1100px;
+  max-height: 1500px;
+  margin: 0 auto;
+}
+
+.modal-header {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-primary);
+}
+
+.modal-header > div {
+  font-size: var(--font-size-large);
+}
+
+.modal-header > div > span {
+  color: var(--color-secondary);
+}
+
+.modal-header > button {
+  cursor: pointer;
+  font-size: var(--font-size-large);
+  outline: none;
+  border: none;
+  padding: 0;
+  color: var(--color-primary);
+  display: flex;
+  align-items: flex-end;
+  background-color: transparent;
+}
+
+.block-details-box {
+  max-width: 96.2%;
+  min-height: 200px;
+  border-radius: var(--border-radius-normal);
+  background-color: var(--bgColor-primary);
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1px;
+  padding-inline: 30px;
+}
+
+.block-details-box > div {
+  width: 49%;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1200px) {
+  .block-details-box {
+    flex-direction: column;
+    padding-block: 30px;
+  }
+  .block-details-box > div {
+    min-width: 98%;
+  }
+  .block-details-box > div:nth-child(1) {
+    height: 160px;
+  }
+  .block-details-box > div:nth-child(2) {
+    height: 120px;
+  }
+}
+
+.placeholder {
+  width: 100%;
+  height: 40px;
+  background-color: var(--bgColor-secondary);
+  display: flex;
+  border-radius: var(--border-radius-small);
+}
+
+.placeholder > div {
+  height: 100%;
+  padding: 0 2%;
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-small);
+  color: var(--color-primary);
+}
+
+.placeholder > div:nth-child(1) {
+  width: 36%;
+}
+
+.placeholder > div:nth-child(2) {
+  width: 56%;
+}
+
+.transaction-details {
+  width: 100%;
+  height: 100%;
+  margin-block-start: var(--margin-small);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction-details > div:nth-child(1) {
+  min-width: 30%;
+  height: 100%;
+  font-size: var(--font-size-large);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+}
+
+.pagination {
+  min-width: 40%;
+  height: 100%;
+  border-radius: var(--border-radius-small);
+  background-color: var(--bgColor-primary);
+  color: var(--color-secondary);
+  display: flex;
+}
+
+.pagination-container {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pagination-item {
+  width: 100%;
+  height: 55px;
+  margin: auto 4px;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.01071em;
+  line-height: 1.43;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  cursor: pointer;
+}
+
+.dots {
+  color: grey;
+}
+
+.disabled {
+  color: grey;
+}
+
+@media screen and (max-width: 1200px) {
+  .transaction-details {
+    flex-direction: column;
+    height: 10%;
+    gap: 15px;
+  }
+  .transaction-details > div {
+    width: 100%;
+  }
+  .pagination {
+    justify-content: center;
+  }
+}
+
+.transaction-id {
+  width: 97%;
+  height: 1%;
+  padding: 1.5%;
+  background-color: var(--bgColor-primary);
+  margin-block: var(--margin-smaller);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  justify-content: space-between;
+}
+
+.transaction-id > div {
+  height: 100%;
+  color: var(--color-primary);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-small);
+}
+
+.transaction-id > .hash {
+  color: var(--color-secondary);
+  width: 50%;
+}
+.transaction-id > .timestamp {
+  width: 30%;
+  display: inherit;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 750px) {
+  .transaction-id {
+    height: 1.5%;
+  }
+  .transaction-id > div {
+    width: 100%;
+  }
+}
+
+.details {
+  width: 100%;
+  min-height: 120px;
+  background-color: var(--bgColor-primary);
+  border-radius: var(--border-radius-small);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.details > div {
+  width: 45%;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 2%;
+}
+
+@media screen and (max-width: 1150px) {
+  .details {
+    flex-direction: column;
+  }
+  .details > div {
+    width: 96%;
+    min-height: 60px;
+  }
+}
+
+.div-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: var(--font-size-small);
+  width: 100%;
+}
+
+.div-wrapper > span:nth-child(2) {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.fee {
+  color: var(--color-primary);
+  font-weight: bold;
+  font-size: var(--font-size-small);
+}
+
+.fee > span {
+  color: green;
+  display: inline-block;
+  margin-inline: 5px;
+}
+
+.totalBTC {
+  background-color: var(--color-secondary);
+  padding-block: 1.5%;
+  border-radius: var(--border-radius-small);
+  font-size: var(--font-size-small);
+  color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  margin-left: auto;
+}
+
+@media screen and (min-width: 1300px) {
+  .totalBTC {
+    width: 26%;
+  }
+}
+
+@media screen and (min-width: 1150px) and (max-width: 1300px) {
+  .totalBTC {
+    width: 33%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .totalBTC {
+    width: 23%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .totalBTC {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.link {
+  width: 80%;
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
