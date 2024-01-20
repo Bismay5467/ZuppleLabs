@@ -35,6 +35,15 @@
   position: relative;
 }
 
+.border {
+  height: 198px;
+  border-inline-start: 4px dashed var(--color-primary);
+  display: inline-block;
+  margin-inline-end: 15px;
+  position: relative;
+  top: 55px;
+}
+
 .block > p {
   color: var(--color-secondary);
 }

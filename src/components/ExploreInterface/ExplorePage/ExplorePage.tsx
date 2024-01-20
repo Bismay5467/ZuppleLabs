@@ -75,13 +75,27 @@ export default function ExplorePage() {
   return (
     <div className="container">
       <div className="blocks">
-        {blocksInfo?.map((block, index: number) => (
-          <DisplayBlock
-            key={index}
-            handleClickEvent={handleClickEvent}
-            block={block}
-          />
-        ))}
+        {blocksInfo?.map(
+          (block, index: number) =>
+            block.addedToNetwork === false && (
+              <DisplayBlock
+                key={index}
+                handleClickEvent={handleClickEvent}
+                block={block}
+              />
+            )
+        )}
+        <div className="border"></div>
+        {blocksInfo?.map(
+          (block, index: number) =>
+            block.addedToNetwork === true && (
+              <DisplayBlock
+                key={index}
+                handleClickEvent={handleClickEvent}
+                block={block}
+              />
+            )
+        )}
       </div>
       <div className="divider"></div>
       {modalData && closeModal === false && (
