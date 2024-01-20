@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ExplorePage from "./components/ExploreInterface/ExplorePage/ExplorePage";
 import FormPage from "./components/FormInterface/FormPage/FormPage";
 import NotFound from "./components/NotFoundpage";
+import "./index.css";
 
 const router = createBrowserRouter([
   { path: "/", element: <FormPage /> },
