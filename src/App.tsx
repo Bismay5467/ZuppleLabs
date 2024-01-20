@@ -1,10 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ExplorePage from "./components/ExploreInterface/ExplorePage/ExplorePage";
+import FormPage from "./components/FormInterface/FormPage/FormPage";
+import NotFound from "./components/NotFoundpage";
 
 const router = createBrowserRouter([
-  { path: "/", element: <div>This is the Home page</div> },
+  { path: "/", element: <FormPage /> },
   { path: "explore", element: <ExplorePage /> },
-  { path: "*", element: <div>Error 404: Page not Found</div> },
+  {
+    path: "*",
+    element: <NotFound />,
+  },
 ]);
 
 function App() {
