@@ -1,20 +1,26 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ExplorePage from "./components/ExploreInterface/ExplorePage/ExplorePage";
+import { lazy, Suspense } from "react";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import FormPage from "./components/FormInterface/FormPage/FormPage";
-import NotFound from "./components/NotFoundpage";
+import LoadingPage from "./components/LoadingPage";
 import "./index.css";
 
-const router = createBrowserRouter([
-  { path: "/", element: <FormPage /> },
-  { path: "explore", element: <ExplorePage /> },
-  {
-    path: "*",
-    element: <NotFound />,
-  },
-]);
+const NotFound = lazy(() => import("./components/NotFoundPage"));
+const ExplorePage = lazy(
+  () => import("./components/ExploreInterface/ExplorePage/ExplorePage")
+);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Router>
+      <Suspense fallback={<LoadingPage />}>
+        <Routes>
+          <Route path="/" element={<FormPage />} />
+          <Route path="explore" element={<ExplorePage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </Router>
+  );
 }
 
 export default App;
