@@ -41,6 +41,9 @@ export default function FileUploadComponent({
                 borderRadius: "var(--border-radius-normal)",
                 color: "grey",
                 textTransform: "none",
+                ":hover": {
+                  border: "1px solid black",
+                },
               }}
             >
               Upload File
