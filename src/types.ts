@@ -39,11 +39,6 @@ export interface IBlock {
   noOfPages: number;
 }
 
-export type TModalHeader = Omit<
-  IBlock,
-  "fees" | "feesRange" | "addedToNetwork"
->;
-
 export type TBlockDetail = Pick<
   IBlock,
   | "size"
@@ -54,6 +49,13 @@ export type TBlockDetail = Pick<
   | "timestamp"
   | "miner"
 >;
+
+export type TModalHeader = {
+  id?: number;
+  noOfTransactions: number;
+  noOfPages: number;
+  blockInfo: Map<keyof TBlockDetail, string | number | undefined>;
+};
 
 export type TBlockInfo = Pick<
   IBlock,
