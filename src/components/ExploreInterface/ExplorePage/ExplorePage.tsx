@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -32,6 +31,18 @@ export default function ExplorePage() {
       try {
         const blockInfo = await import("../../../data/blocks.json");
         setBlocksInfo(blockInfo.default);
+        const matchingObj = blockInfo?.default?.filter(
+          (block) => block.addedToNetwork === true
+        )[0];
+        if (matchingObj === undefined) return;
+        const { id, noOfPages, noOfTransactions, ...modalObj } = matchingObj;
+        const detailBlockInfo = getDetailBlockInfo(modalObj);
+        setModalData({
+          id,
+          noOfPages,
+          noOfTransactions,
+          blockInfo: detailBlockInfo,
+        });
       } catch (error: any) {
         console.error(error.message);
       }
@@ -58,15 +69,7 @@ export default function ExplorePage() {
       (block) => block.id === blockId && block.addedToNetwork === true
     );
     if (matchingObj === undefined) return;
-    const {
-      fees,
-      feesRange,
-      addedToNetwork,
-      id,
-      noOfPages,
-      noOfTransactions,
-      ...modalObj
-    } = matchingObj;
+    const { id, noOfPages, noOfTransactions, ...modalObj } = matchingObj;
     const detailBlockInfo = getDetailBlockInfo(modalObj);
     setModalData({
       id,
