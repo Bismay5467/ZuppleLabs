@@ -14,6 +14,7 @@ import getFormattedDate from "../../../helper/getFormattedDate";
 import CssTextFieldComponent, { CssTextField } from "./CssTextField";
 import FileUploadComponent from "./FileUploadComponent";
 import { formSubmitEvent } from "./submitEvent";
+import { Snackbar } from "@mui/material";
 
 export type TFormFields = z.infer<typeof uploadfileSchema>;
 
@@ -45,11 +46,15 @@ export default function FormModal() {
     thumbnailImage: string;
   }>({ sourceFile: "", thumbnailImage: "" });
 
+  const [showNotification, setShowNotification] = useState<boolean>(false);
+
   const handleFormSubmitEvent: SubmitHandler<TFormFields> = async (data) => {
     try {
       const res = await formSubmitEvent(data);
-      console.log(res);
-      if (res.status >= 200 && res.status < 300) reset();
+      if (res.status >= 200 && res.status < 300) {
+        setShowNotification(true);
+        reset();
+      }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       setError("root", { message: error.message });
@@ -61,6 +66,13 @@ export default function FormModal() {
       ...prevState,
       [event.target.name]: (event.target.files as FileList)[0].name,
     }));
+  };
+
+  const handleClose = (_: unknown, reason?: string) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setShowNotification(false);
   };
 
   const { formattedMinDate, formattedMaxDate } = getFormattedDate();
@@ -267,6 +279,13 @@ export default function FormModal() {
           </button>
         </form>
       </div>
+      <Snackbar
+        open={showNotification}
+        autoHideDuration={5000}
+        onClose={handleClose}
+        message="File was uploaded successfully🎉"
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      />
     </div>
   );
 }

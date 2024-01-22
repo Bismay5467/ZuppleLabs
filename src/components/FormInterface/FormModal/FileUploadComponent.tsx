@@ -37,7 +37,7 @@ export default function FileUploadComponent({
               variant="outlined"
               component="label"
               sx={{
-                border: "1px solid var(--border-color-blur)",
+                border: "1px solid #1A2421",
                 borderRadius: "var(--border-radius-normal)",
                 color: "grey",
                 textTransform: "none",

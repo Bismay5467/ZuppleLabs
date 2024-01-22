@@ -1,5 +1,6 @@
 import axios from "axios";
 import { TFormFields } from "./FormModal";
+import { FAKE_URL } from "../../../constants/constants";
 
 export const formSubmitEvent = async (data: TFormFields) => {
   const formdata = new FormData();
@@ -15,9 +16,9 @@ export const formSubmitEvent = async (data: TFormFields) => {
   });
 
   return await axios({
-    url: "/posts",
+    url: FAKE_URL,
     method: "POST",
-    data: formdata,
+    data: JSON.stringify(formdata),
     headers: { "Content-Type": "multipart/form-data" },
   });
 };
