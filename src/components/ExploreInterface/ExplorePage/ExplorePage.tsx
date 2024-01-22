@@ -101,6 +101,7 @@ export default function ExplorePage() {
                 key={index}
                 handleClickEvent={handleClickEvent}
                 block={block}
+                index={index}
               />
             )
         )}

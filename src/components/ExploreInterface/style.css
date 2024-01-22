@@ -76,10 +76,15 @@
   background: linear-gradient(to top, #4a00e0, #8e2de2);
 }
 
-.notAddtoNetworkFront {
+/* .notAddtoNetworkFront {
   background: #636363;
   background: -webkit-linear-gradient(to left, #a2ab58, #636363);
   background: linear-gradient(to left, #a2ab58, #636363);
+} */
+.notAddtoNetworkFront {
+  background: #645b16;
+  background: -webkit-linear-gradient(to right, #645b16, #8f5a13);
+  background: linear-gradient(to right, #645b16, #8f5a13);
 }
 
 .addtoNetworkTop {
@@ -88,18 +93,26 @@
   background: linear-gradient(to right, #3c1053, #612a4b);
 }
 
-.notAddtoNetworkTop {
+/* .notAddtoNetworkTop {
   background: #636363;
   background: -webkit-linear-gradient(to left, #61672f, #636363);
   background: linear-gradient(to left, #61672f, #636363);
+} */
+.notAddtoNetworkTop {
+  background: #312829;
+  background: -webkit-linear-gradient(to left, #464a22, #312829);
+  background: linear-gradient(to left, #464a22, #312829);
 }
 
 .addtoNetworkLeft {
   background: #260d3c;
 }
 
-.notAddtoNetworkLeft {
+/* .notAddtoNetworkLeft {
   background: #3e3e3e;
+} */
+.notAddtoNetworkLeft {
+  background: #1f191a;
 }
 
 .block .front > p {

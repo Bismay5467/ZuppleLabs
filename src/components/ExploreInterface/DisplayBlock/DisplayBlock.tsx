@@ -6,9 +6,11 @@ import "../style.css";
 export default function DisplayBlock({
   block,
   handleClickEvent,
+  index,
 }: {
   handleClickEvent: (blockId: number) => void;
   block: TBlockInfo;
+  index?: number;
 }) {
   return (
     <div className="block">
@@ -44,6 +46,12 @@ export default function DisplayBlock({
         onClick={() => handleClickEvent(block.id as number)}
         style={{
           pointerEvents: block.addedToNetwork === false ? "none" : "all",
+          background:
+            block.addedToNetwork === false
+              ? index !== 3
+                ? "#645b16"
+                : ""
+              : "",
         }}
       >
         <p>{`~ ${block.fees} sat/vB`}</p>
