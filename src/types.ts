@@ -14,6 +14,7 @@ export interface ITransactionProcessing {
   hash?: string;
   amount?: number;
   fee?: string;
+  label?: string;
 }
 
 export interface ITransaction {

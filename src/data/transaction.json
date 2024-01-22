@@ -54,7 +54,8 @@
       "status": "failed",
       "hash": "18f75452814dec66956bfsaesivnv57656745645645646ffdrdse783543i898102d",
       "amount": 0.02355332,
-      "fee": "470.0 sat/vB - 90,000 sat ( $28.72 )"
+      "fee": "470.0 sat/vB - 90,000 sat ( $28.72 )",
+      "label": "multisig 2 of 3"
     },
     "history": [
       {
