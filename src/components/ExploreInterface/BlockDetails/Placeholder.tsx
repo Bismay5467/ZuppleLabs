@@ -6,19 +6,20 @@ import {
   getTransformedHashValue,
 } from "../../../helper/transformedValue";
 import { useEffect, useState } from "react";
+import { DETAIL_BLOCK_INFO_KEYS } from "../../../constants/constants";
 
 const getSpanElement = (key: string, value: string) => {
   key = key.toLowerCase();
   switch (key) {
-    case "total fees":
-    case "subsidy + fees":
+    case DETAIL_BLOCK_INFO_KEYS.TOTAL_FEES:
+    case DETAIL_BLOCK_INFO_KEYS.SUBSIDY_WITH_FEES:
       const btc = Number(value.split(" ").slice(0, 1));
       return (
         <span style={{ color: "green", fontWeight: "bold" }}>
           {`( $${convertBTCtoDollar(btc)} )`}
         </span>
       );
-    case "timestamp":
+    case DETAIL_BLOCK_INFO_KEYS.TIMESTAMP:
       const timestamp = value;
       return (
         <span style={{ fontStyle: "italic" }}>
@@ -47,14 +48,14 @@ export default function Placeholder({
   >({});
 
   useEffect(() => {
-    if (Key.toLowerCase() === "miner")
+    if (Key.toLowerCase() === DETAIL_BLOCK_INFO_KEYS.MINER)
       setSpanElementStyling({
         backgroundColor: "blue",
         display: "inline-block",
         padding: "4px",
         borderRadius: "3px",
       });
-    else if (Key.toLowerCase() === "hash")
+    else if (Key.toLowerCase() === DETAIL_BLOCK_INFO_KEYS.HASH)
       setStylingForDiv({
         color: "var(--color-secondary)",
       });
@@ -84,10 +85,10 @@ export default function Placeholder({
       <div>{Key}</div>
       <div style={{ ...stylingForValueDivElement }}>
         <p style={{ ...spanElementStyling }}>
-          {Key.toLowerCase() === "timestamp"
+          {Key.toLowerCase() === DETAIL_BLOCK_INFO_KEYS.TIMESTAMP
             ? transformedValue.split(" ").slice(0, 2).join(" ")
             : transformedValue}{" "}
-          {Key.toLowerCase() === "hash" ? (
+          {Key.toLowerCase() === DETAIL_BLOCK_INFO_KEYS.HASH ? (
             <BsClipboard2Fill
               style={{ color: "white", cursor: "pointer" }}
               onClick={copyToClipboard}

@@ -16,7 +16,7 @@ export function Transaction({
   return (
     <>
       <div>
-        <div className="div-wrapper">
+        <div className="div-wrapper" style={{ backgroundColor: "white" }}>
           <span
             style={{
               color: processing.hash
@@ -47,7 +47,10 @@ export function Transaction({
           {processing.amount && (
             <span>{`${processing.amount.toFixed(8)} BTC`}</span>
           )}
+          <br />
+          ABC
         </div>
+        ABC
         {processing.fee && (
           <div className="fee">
             {processing.fee.split(" ").slice(0, 5).join(" ")} (

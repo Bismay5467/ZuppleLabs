@@ -1,10 +1,13 @@
-import { BTC_TO_DOLLAR_RATE } from "../constants/constants";
+import {
+  BTC_TO_DOLLAR_RATE,
+  DETAIL_BLOCK_INFO_KEYS,
+} from "../constants/constants";
 
 export const capitalizeKey = (key: string) =>
   key.charAt(0).toUpperCase().concat(key.slice(1));
 
 export const getTransformedHashValue = (key: string, value: string) => {
-  if (key.toLowerCase() !== "hash") return value;
+  if (key.toLowerCase() !== DETAIL_BLOCK_INFO_KEYS.HASH) return value;
   return value.substring(0, 7).concat("...").concat(value.slice(-7));
 };
 
@@ -36,14 +39,14 @@ export const transformedValue = (key: string, value: number | string) => {
   key = key.toLowerCase();
 
   switch (key) {
-    case "weight":
+    case DETAIL_BLOCK_INFO_KEYS.WEIGHT:
       return `${value} MWU`;
-    case "size":
+    case DETAIL_BLOCK_INFO_KEYS.SIZE:
       return `${convertSizeToMB(value as number)} MB`;
-    case "total fees":
-    case "subsidy + fees":
+    case DETAIL_BLOCK_INFO_KEYS.TOTAL_FEES:
+    case DETAIL_BLOCK_INFO_KEYS.SUBSIDY_WITH_FEES:
       return `${value} BTC `;
-    case "timestamp":
+    case DETAIL_BLOCK_INFO_KEYS.TIMESTAMP:
       return convertTimestampToDateString(value as number);
     default:
       return value.toString();

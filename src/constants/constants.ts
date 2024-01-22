@@ -15,3 +15,13 @@ export const DAYS_IN_MONTH = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 export const FAKE_URL =
   "https://65ada067adbd5aa31be10765.mockapi.io/api/v1/upload";
+
+export const DETAIL_BLOCK_INFO_KEYS = {
+  HASH: "hash",
+  TIMESTAMP: "timestamp",
+  SIZE: "size",
+  WEIGHT: "weight",
+  TOTAL_FEES: "total fees",
+  SUBSIDY_WITH_FEES: "subsidy + fees",
+  MINER: "miner",
+};

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MdCancel } from "react-icons/md";
@@ -8,6 +10,7 @@ import TransactionList from "../TransactionList/TransactionList";
 import { IBlock, ITransaction, TModalHeader } from "../../../types";
 import wait from "../../../helper/wait";
 import "../style.css";
+import getDetailBlockInfo from "../../../helper/getDetailBlockInfo";
 
 interface ITransactionInfo {
   info: ITransaction[] | null;
@@ -55,9 +58,22 @@ export default function ExplorePage() {
       (block) => block.id === blockId && block.addedToNetwork === true
     );
     if (matchingObj === undefined) return;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { fees, feesRange, addedToNetwork, ...modalObj } = matchingObj;
-    setModalData(modalObj as IBlock);
+    const {
+      fees,
+      feesRange,
+      addedToNetwork,
+      id,
+      noOfPages,
+      noOfTransactions,
+      ...modalObj
+    } = matchingObj;
+    const detailBlockInfo = getDetailBlockInfo(modalObj);
+    setModalData({
+      id,
+      noOfPages,
+      noOfTransactions,
+      blockInfo: detailBlockInfo,
+    });
     setCloseModal(false);
   };
 
@@ -108,17 +124,7 @@ export default function ExplorePage() {
               <MdCancel />
             </button>
           </div>
-          <BlockDetails
-            details={{
-              hash: modalData.hash,
-              timestamp: modalData.timestamp,
-              size: modalData.size,
-              weight: modalData.weight,
-              "total fees": modalData["total fees"],
-              "subsidy + fees": modalData["subsidy + fees"],
-              miner: modalData.miner,
-            }}
-          />
+          <BlockDetails details={modalData.blockInfo} />
           <div className="transaction-details">
             <div>
               {`${modalData.noOfTransactions.toLocaleString(
