@@ -26,6 +26,21 @@ Some additional assumptions :
 - Upon page load, the details of the most recently added block to the network will be presented.
 - Recently conducted transactions, along with block information, are fetched from a cache instance. Additional transactions are fetched from the database as users navigate through the pages.
 
+## Features
+
+### Form Page
+
+- Form validation on submitting the form
+
+### Blockchain Explore Page
+
+- Functional pagination of transaction history.
+- Hash value copied to clipboard ( functional ).
+- Modal displaying info about the blocks can be closed by clicking on the cancel button present at top left corner.
+
+
+**Lazy loading of pages to reduce chunk sizes send over network. This results in increased performance.**
+
 ## 🛠️ Tech Stack Used
 
 - HTML / CSS / JS
@@ -64,8 +79,6 @@ https://zupple-labs.vercel.app/
 ![Alt text](./screenshots/blockchain_explore_page_mobile_view_1.png)
 ![Alt text](./screenshots/blockchain_explore_page_mobile_view_2.png)
 
-## 🧑‍💻 Demo Video
-
 ## 💻 Local Setup
 
 The following steps will get you up and running :
@@ -87,18 +100,3 @@ Additional commands :
 
 - `npm run build && npm run preview` to build the project and start the production server.
 - `npm run lint` to check for linting
-
-## Features
-
-### Form Page
-
-- Form validation on submitting the form
-
-### Blockchain Explore Page
-
-- Functional pagination of transaction history.
-- Hash value copied to clipboard ( functional ).
-- Modal displaying info about the blocks can be closed by clicking on the cancel button present at top left corner.
-
-
-**Lazy loading of pages to reduce chunk sizes send over network. This results in increased performance.**
